@@ -15,8 +15,7 @@ runs:
     - uses: actions/setup-node@v4
       with:
         node-version: 20
+        always-auth: true
         cache: "pnpm"
-        cache-dependency-path: |
-          pnpm-lock.yaml
-          packages/**/pnpm-lock.yaml
+        cache-dependency-path: pnpm-lock.yaml
         registry-url: "https://registry.npmjs.org"
