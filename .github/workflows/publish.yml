@@ -39,9 +39,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Debug npm Authentication
-        run: npm config list
-
       - name: Bump Version
         run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
 
