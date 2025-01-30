@@ -1,0 +1,22 @@
+name: Setup
+inputs:
+  cache-tag:
+    description: "The cache tag to use"
+    required: true
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - uses: pnpm/action-setup@v3
+      with:
+        version: 9
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: "pnpm"
+        cache-dependency-path: |
+          pnpm-lock.yaml
+          packages/**/pnpm-lock.yaml
+        registry-url: "https://registry.npmjs.org"
