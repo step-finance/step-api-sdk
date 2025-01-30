@@ -39,9 +39,17 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Publish Packages
-        run: |
-          pnpm ts-node ./tools/scripts/version-and-publish-packages.ts ${{ github.event.inputs.version }}
+      - name: Bump Version
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+
+      - name: Build Package
+        run: npm run build 
+
+      - name: Verify Build Output
+        run: ls -la dist/ 
+
+      - name: Publish Package
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
