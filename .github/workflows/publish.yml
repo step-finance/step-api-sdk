@@ -31,12 +31,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js & Install Dependencies
-        uses: actions/setup-node@v4
+      - name: Setup Node.js & pnpm
+        uses: ./.github/actions/setup
         with:
-          node-version: 20
-          cache: "pnpm"
-          registry-url: "https://registry.npmjs.org"
+          cache-tag: "publish"
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
