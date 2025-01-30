@@ -2,6 +2,7 @@
   "name": "@stepfinance/step-api-sdk",
   "version": "1.0.0",
   "description": "SDK for the Step API",
+  "author": "Step Finance",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

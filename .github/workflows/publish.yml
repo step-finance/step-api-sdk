@@ -1,0 +1,60 @@
+name: Version & Publish Packages
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to publish"
+        type: choice
+        default: "patch"
+        options:
+          - "patch"
+          - "minor"
+          - "major"
+
+jobs:
+  publish:
+    name: "Version & Publish Packages"
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js & Install Dependencies
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Publish Packages
+        run: |
+          pnpm ts-node ./tools/scripts/version-and-publish-packages.ts ${{ github.event.inputs.version }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create Bump PR
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "ci: publish packages"
+          title: "bot: Auto Bump Packages"
+          branch: auto-version-packages
+          base: main
+          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          reviewers: ${{ github.triggering_actor }}
+          body: |
+            # Do not merge this PR. It will be merged automatically on approval.
