@@ -3,6 +3,7 @@ import type { AssetInfo, BasePosition, LiquidityAssetInfo, ValueSummaryData, Yie
 export type TokenPosition = Omit<BasePosition, "title" | "platform"> & {
   asset: AssetInfo;
   balance: number;
+  balanceString: string;
   decimals: number;
   programId: string;
   priceInUSD: number | null;
@@ -11,6 +12,7 @@ export type TokenPosition = Omit<BasePosition, "title" | "platform"> & {
 
 export type YieldTokenPosition = Omit<BasePosition, "title" | "platform"> & {
   balance: number;
+  balanceString: string;
   decimals: number;
   programId: string;
   priceInUSD: number | null;

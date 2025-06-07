@@ -10,6 +10,7 @@ export type MarginPerpetual = Omit<BasePosition, "platform"> & {
   logoURI?: string;
   isLong: boolean;
   size: number;
+  sizeString: string;
   notionalValue: number | null;
   avgEntryPrice: number | null;
 };
@@ -17,6 +18,7 @@ export type MarginPerpetual = Omit<BasePosition, "platform"> & {
 export type MarginOrder = Omit<BasePosition, "platform" | "valueInUSD"> & {
   isBid: boolean;
   size: number;
+  sizeString: string;
   offerPrice: number | null;
   logoURI?: string;
 };
@@ -24,6 +26,7 @@ export type MarginOrder = Omit<BasePosition, "platform" | "valueInUSD"> & {
 export type MarginBalance = Omit<BasePosition, "title" | "platform"> & {
   asset: AssetInfo;
   balance: number;
+  balanceString: string;
   apr: number | null;
 };
 

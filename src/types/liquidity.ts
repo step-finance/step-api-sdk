@@ -13,14 +13,19 @@ export type AmmPosition = Omit<BasePosition, "title"> & {
   curveType: CurveType;
   apr: number | null;
   balance: number;
+  balanceString: string;
 };
 
 export type ClmmPosition = BasePosition & {
   poolInfoPda: string;
+  positionMintAddress: string;
   underlyings: AssetWithBalance[];
   curveType: CurveType;
   apr: number | null;
   isInRange: boolean;
+  upperLimit: number | null;
+  lowerLimit: number | null;
+  currentPrice: number | null;
   rewardAssets: AssetWithBalance[];
   pendingRewardInUSD: number | null;
 };

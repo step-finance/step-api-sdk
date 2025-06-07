@@ -8,7 +8,12 @@ export type ValidatorStakingPosition = Omit<BasePosition, "platform"> & {
   stakeAccountAddress: string;
   authorizedStakerAddress: string | null;
   avg24hRewardInUSD: number;
-  balance: number;
+  balance: number; // total SOL in the account including rentExemptReserve
+  balanceString: string;
+  activeStakeBalance: number; // balance of activated SOL stake
+  activeStakeBalanceString: string;
+  inactiveBalance: number; // inactive SOL balance excluding rentExemptReserve
+  inactiveBalanceString: string;
   status: ValidatorStakeStatus;
 };
 
