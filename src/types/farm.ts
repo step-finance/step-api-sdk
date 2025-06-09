@@ -5,6 +5,7 @@ export type FarmPosition = BasePosition & {
   asset: LiquidityAssetInfo;
   apr: number | null;
   balance: number;
+  balanceString: string;
   rewardAssets: AssetWithBalance[];
   pendingRewardInUSD: number | null;
 };

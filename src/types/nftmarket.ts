@@ -13,6 +13,7 @@ export type NFTMarketPoolOrder = BasePosition & {
   mmProfitInSOL: number;
   mmProfitInUSD: number;
   balance: number;
+  balanceString: string;
   isSharedEscrow: boolean;
   floorPriceInSOL: number | null;
   apy: number | null;
@@ -22,6 +23,7 @@ export type NFTMarketPoolOrder = BasePosition & {
 export type NFTMarketEscrow = Omit<BasePosition, "title"> & {
   asset: AssetInfo;
   balance: number;
+  balanceString: string;
 };
 
 export type NFTMarketResult = {

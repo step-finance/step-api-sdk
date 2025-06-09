@@ -6,6 +6,7 @@ export type NFTPosition = Omit<BasePosition, "title" | "platform"> & {
   asset: AssetInfo;
   metadataUrl: string;
   balance: number;
+  balanceString: string;
   floorPriceInSOL: number | null;
 };
 export type NFTResult = NFTPosition[];

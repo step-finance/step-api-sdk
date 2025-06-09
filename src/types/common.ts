@@ -16,6 +16,7 @@ export type LiquidityAssetInfo = {
 
 export type AssetWithBalance = AssetInfo & {
   balance: number;
+  balanceString: string;
 };
 
 export type PlatformInfo = {

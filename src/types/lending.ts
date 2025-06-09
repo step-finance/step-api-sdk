@@ -2,7 +2,10 @@ import type { AssetInfo, BasePosition, ValueSummaryData, YieldSummaryData } from
 
 export type TokenLendingPosition = Omit<BasePosition, "title"> & {
   asset: AssetInfo;
+  poolAddress: string | null;
+  poolName: string | null;
   balance: number;
+  balanceString: string;
   apr: number | null;
 };
 
@@ -17,8 +20,10 @@ export type NFTLendingPosition = Omit<BasePosition, "title"> & {
   collectionName: string;
   logoURI?: string;
   loanAmount: number;
+  loanAmountString: string;
   loanEndTs: number | null;
   interestAmountInSol: number;
+  interestAmountInSolString: string;
   status: "borrowed" | "offered" | "lending";
 };
 
