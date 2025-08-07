@@ -18,6 +18,50 @@ export type ClobUnsettledBalance = BasePosition & {
   marketAddress: string;
 };
 
-export type DexResult = { order: ClobOrder[]; unsettledBalance: ClobUnsettledBalance[] };
+export type RepeatingOrderPosition = BasePosition & {
+  strategyType: string;
+  positionAddress: string;
+  inAsset: AssetInfo;
+  outAsset: AssetInfo;
+  saleAmountPerCycle: number;
+  saleAmountPerCycleString: string;
 
-export type DexSummary = { order: ValueSummaryData; unsettledBalance: ValueSummaryData };
+  inDeposited: number;
+  inDepositedString: string;
+
+  inWithdrawn: number;
+  inWithdrawnString: string;
+
+  inRemaining: number;
+  inRemainingString: string;
+
+  inUsed: number;
+  inUsedString: string;
+
+  outReceived: number;
+  outReceivedString: string;
+
+  outWithdrawn: number;
+  outWithdrawnString: string;
+
+  outBalance: number;
+  outBalanceString: string;
+
+  pctComplete: number;
+  createdAt: number;
+  nextOrderAt: number;
+  orderInterval: number;
+  //NOTE: valueInUSD = (inDeposited - inWithdrawn) * (inAsset.priceInUSD) + (outReceived - outWithdrawn) * (outAsset.priceInUSD)
+};
+
+export type DexResult = {
+  order: ClobOrder[];
+  unsettledBalance: ClobUnsettledBalance[];
+  repeatingOrder: RepeatingOrderPosition[];
+};
+
+export type DexSummary = {
+  order: ValueSummaryData;
+  unsettledBalance: ValueSummaryData;
+  repeatingOrder: ValueSummaryData;
+};
