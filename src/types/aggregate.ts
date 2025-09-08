@@ -4,6 +4,7 @@ import { FarmResult, FarmSummary } from "./farm";
 import { LendingResult, LendingSummary } from "./lending";
 import { LiquidityResult, LiquiditySummary } from "./liquidity";
 import { MarginResult, MarginSummary } from "./margin";
+import { MultiplyResult, MultiplySummary } from "./multiply";
 import { NFTResult, NFTSummary } from "./nft";
 import { NFTMarketResult, NFTMarketSummary } from "./nftmarket";
 import { StakingResult, StakingSummary } from "./staking";
@@ -26,6 +27,7 @@ export type AggregateResult = {
   staking: StakingResult;
   farm: FarmResult;
   vault: VaultResult;
+  multiply: MultiplyResult;
   margin: MarginResult;
   lending: LendingResult;
   validator: ValidatorResult;
@@ -41,6 +43,7 @@ export type SummaryPositions = {
   staking: StakingSummary;
   farm: FarmSummary;
   vault: VaultSummary;
+  multiply: MultiplySummary;
   margin: MarginSummary;
   lending: LendingSummary;
   validator: ValidatorSummary;
