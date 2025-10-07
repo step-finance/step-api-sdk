@@ -8,10 +8,11 @@ export enum CurveType {
   ConcentratedLiquidity = 4,
 }
 
-export type AmmPosition = Omit<BasePosition, "title"> & {
+export type AmmPosition = BasePosition & {
   asset: LiquidityAssetInfo;
   curveType: CurveType;
   apr: number | null;
+  mint: string;
   balance: number;
   balanceString: string;
 };
